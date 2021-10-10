@@ -110,6 +110,8 @@ ble.onConnectGATT = function (uuid) {
 //--------------------------------------------------
 ble.onRead = function (data, uuid){
   //フォーマットに従って値を取得
+  
+  console.log(data);
   let value = "";
   for(let i = 0; i < data.byteLength; i++){
     value = value + String.fromCharCode(data.getInt8(i));
@@ -119,7 +121,7 @@ ble.onRead = function (data, uuid){
   value = Number(value);
 
   //コンソールに値を表示
-  console.log(value);
+  //console.log(value);
 
   //HTMLにデータを表示
   document.getElementById('data_text').innerHTML = value;
