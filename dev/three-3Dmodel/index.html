@@ -83,6 +83,7 @@
 							.load( 'Aircraft_obj.obj', function ( object ) {
 
 								object.position.y = - 95;
+                                                                object.scale.set(100, 100, 100); 
 								scene.add( object );
 
 							}, onProgress, onError );
