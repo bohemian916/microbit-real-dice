@@ -120,8 +120,8 @@
 
 			function onDocumentMouseMove( event ) {
 
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
+				mouseX = ( event.clientX - windowHalfX ) / 1; //past 2
+				mouseY = ( event.clientY - windowHalfY ) / 1;
 
 			}
 
@@ -136,8 +136,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * 2.0;
-				camera.position.y += ( - mouseY - camera.position.y ) * 2.0;
+				camera.position.x += ( mouseX - camera.position.x ) * .10;
+				camera.position.y += ( - mouseY - camera.position.y ) * .10;
 
 				camera.lookAt( scene.position );
 
