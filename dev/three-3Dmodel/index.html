@@ -22,7 +22,7 @@
 
 
                         let camera, scene, renderer;
-
+			let obj;
 			let mouseX = 0, mouseY = 0;
 
 			let windowHalfX = window.innerWidth / 2;
@@ -86,6 +86,7 @@
                                                                 object.scale.set(10, 10, 10); 
 								object.rotation.set(0, 0, 0);
 								scene.add( object );
+								obj = onject;
 
 							}, onProgress, onError );
 
@@ -138,7 +139,9 @@
 
 				//camera.position.x += ( mouseX - camera.position.x ) * .50;
 				//camera.position.y += ( - mouseY - camera.position.y ) * .50;
-
+				if(obj!=== null){
+					obj.rotation.y += 0.01;
+				}
 				camera.lookAt( scene.position );
 
 				renderer.render( scene, camera );
