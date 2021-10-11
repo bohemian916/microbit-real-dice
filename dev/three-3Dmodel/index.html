@@ -84,6 +84,7 @@
 
 								object.position.y = - 95;
                                                                 object.scale.set(5, 5, 5); 
+								object.rotation.set(180, 0, 0);
 								scene.add( object );
 
 							}, onProgress, onError );
@@ -135,8 +136,8 @@
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .90;
-				camera.position.y += ( - mouseY - camera.position.y ) * .90;
+				camera.position.x += ( mouseX - camera.position.x ) * 5.0;
+				camera.position.y += ( - mouseY - camera.position.y ) * 5.0;
 
 				camera.lookAt( scene.position );
 
