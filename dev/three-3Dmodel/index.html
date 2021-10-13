@@ -21,10 +21,11 @@
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
 			// microbit 
 			const ble = new BlueJelly();
+			let value, value2; 
+
 			ble.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_TX_CHARACTERISTIC);
 			ble.onRead = function (data, uuid){
 
-				let value = "";
   				const decoder = new TextDecoder('utf-8')
   				const str = decoder.decode(data)
   				console.log(str);
@@ -171,6 +172,8 @@
 				//camera.position.y += ( - mouseY - camera.position.y ) * .50;
 				if(obj){
 					//obj.rotation.y += 0.01;
+					obj.rotation.x = value;
+					obj.rotation.z = value2  
 				}
 				camera.lookAt( scene.position );
 
