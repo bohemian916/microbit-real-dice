@@ -21,7 +21,8 @@
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
 			// microbit 
 			const ble = new BlueJelly();
-			let roll, pitch, yaw; 
+			let roll, pitch, yaw, default_yaw; 
+			let first_read = true;
 
 			ble.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_TX_CHARACTERISTIC);
 			ble.onRead = function (data, uuid){
@@ -33,6 +34,11 @@
 				roll = Number(str.split(',')[0]);
 				pitch = Number(str.split(',')[1]);
 				yaw = Number(str.split(',')[2]);
+
+				if(first_read){
+					default_yaw = yaw;
+					first_read = false;
+				}
 			}
 
 			document.getElementById('startNotifications').addEventListener('click', function() {
@@ -175,6 +181,7 @@
 					//obj.rotation.y += 0.01;
 					obj.rotation.z = roll * ( Math.PI / 180 ) * -1.0;
 					obj.rotation.x = pitch * ( Math.PI / 180 ); 
+					obj.rotation.y = (yaw - default_yaw) * ( Math.PI / 180 ); 
 				}
 				camera.lookAt( scene.position );
 
