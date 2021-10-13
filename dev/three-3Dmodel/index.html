@@ -4,17 +4,44 @@
 		<title>three.js webgl - OBJLoader + MTLLoader</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script type="text/javascript" src="bluejelly.js"></script>
 	</head>
 
 	<body>
 		<div id="info">
 		<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - OBJLoader + MTLLoader
 		</div>
+    		<div class="contents margin">
+        		<button id="startNotifications" class="button">Start Notify</button>
+        		<button id="stopNotifications" class="button">Stop Notify</button>
+		</div>
 
                 <script type="module">
 
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
+			// microbit 
+			const ble = new BlueJelly();
+			ble.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_TX_CHARACTERISTIC);
+			ble.onRead = function (data, uuid){
 
+				let value = "";
+  				const decoder = new TextDecoder('utf-8')
+  				const str = decoder.decode(data)
+  				console.log(str);
+  				//数値化
+				value = Number(str.split(',')[0]);
+				value2 = Number(str.split(',')[1]);
+			}
+
+			document.getElementById('startNotifications').addEventListener('click', function() {
+      				ble.startNotify('UUID1');
+			});
+
+			document.getElementById('stopNotifications').addEventListener('click', function() {
+      				ble.stopNotify('UUID1');
+			});
+
+			// three.js
   			import * as THREE from 'https://cdn.skypack.dev/three@0.133.1';
                         import { OBJLoader } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/OBJLoader.js';
                         import { DDSLoader } from 'https://cdn.skypack.dev/three@0.133.1/examples/jsm/loaders/DDSLoader.js';
