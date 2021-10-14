@@ -21,7 +21,7 @@
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
 			// microbit 
 			const ble = new BlueJelly();
-			let roll, pitch; 
+			let roll, pitch =0; 
 			window.onload = function () {
 				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
 			}
@@ -180,8 +180,6 @@
 					//obj.rotation.y += 0.01;
 					obj.rotation.x = -1.0 * roll ;
 					obj.rotation.z =  pitch ; 
-				}else{
-					obj.rotation.x=0.01;
 				}
 				camera.lookAt( scene.position );
 
