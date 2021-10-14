@@ -20,23 +20,23 @@
 
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
 			// microbit 
-//			const ble = new BlueJelly();
+			const ble = new BlueJelly();
 			let roll, pitch =0; 
-//			window.onload = function () {
-//				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
-//			}
-//			ble.onRead = function (data, uuid){
+			window.onload = function () {
+				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
+			}
+			ble.onRead = function (data, uuid){
 
   				//数値化
-//				var accX =data.getInt16(0,true)/1000.0 ;
-//				var accY =data.getInt16(2,true)/1000.0 ;
-  //				var accZ =data.getInt16(4,true)/1000.0 ;
-//
-//				roll = Math.atan2(accY, accZ);
-//				var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
-//				pitch = Math.atan2( -1.0 * accX, x);
-//
-//			}
+				var accX =data.getInt16(0,true)/1000.0 ;
+				var accY =data.getInt16(2,true)/1000.0 ;
+  				var accZ =data.getInt16(4,true)/1000.0 ;
+
+				roll = Math.atan2(accY, accZ);
+				var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
+				pitch = Math.atan2( -1.0 * accX, x);
+
+			}
 
 			document.getElementById('startNotifications').addEventListener('click', function() {
       				ble.startNotify('UUID1');
