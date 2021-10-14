@@ -21,7 +21,7 @@
   			// Find the latest version by visiting https://cdn.skypack.dev/three.
 			// microbit 
 			const ble = new BlueJelly();
-			let roll, pitch =0; 
+			let roll = 0, pitch =0; 
 			window.onload = function () {
 				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
 			}
