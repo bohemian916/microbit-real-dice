@@ -175,8 +175,8 @@
 				//camera.position.y += ( - mouseY - camera.position.y ) * .50;
 				if(obj){
 					//obj.rotation.y += 0.01;
-					obj.rotation.z = -1.0 *roll ;
-					obj.rotation.x = pitch ; 
+					obj.rotation.x = roll ;
+					obj.rotation.z = pitch ; 
 				}
 				camera.lookAt( scene.position );
 
