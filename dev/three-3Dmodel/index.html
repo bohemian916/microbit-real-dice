@@ -180,6 +180,8 @@
 					//obj.rotation.y += 0.01;
 					obj.rotation.x = -1.0 * roll ;
 					obj.rotation.z =  pitch ; 
+				}else{
+					obj.rotation.x=0.01;
 				}
 				camera.lookAt( scene.position );
 
