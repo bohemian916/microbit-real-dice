@@ -107,14 +107,14 @@
 
 				new MTLLoader( manager )
 				//	.setPath( 'models/obj/male02/' )
-					.load( 'Aircraft_obj.mtl', function ( materials ) {
+					.load( 'dice.mtl', function ( materials ) {
 
 						materials.preload();
 
 						new OBJLoader( manager )
 							.setMaterials( materials )
 						//	.setPath( 'models/obj/male02/' )
-							.load( 'Aircraft_obj.obj', function ( object ) {
+							.load( 'dice.obj', function ( object ) {
 
 								//object.position.y = - 95;
                                                                 object.scale.set(10, 10, 10); 
