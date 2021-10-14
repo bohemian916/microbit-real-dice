@@ -22,8 +22,9 @@
 			// microbit 
 			const ble = new BlueJelly();
 			let roll, pitch; 
-
-			ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
+			window.onload = function () {
+				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
+			}
 			ble.onRead = function (data, uuid){
 
   				//数値化
