@@ -41,8 +41,8 @@
 				const str = decoder.decode(data)
 				console.log(str);
 				//数値化
-				roll = Number(str.split(',')[0]);
-				pitch = Number(str.split(',')[1]);
+				roll = Number(str.split(',')[0])/180*Math.PI;
+				pitch = Number(str.split(',')[1])/180*Math.PI;
 			}
 
 			function floor_and_ceil(acc){
@@ -158,8 +158,8 @@
 				if(obj){
 					//obj.rotation.y += 0.01;
 					obj.rotation.x = (-1.0 * roll) ;
-					obj.rotation.y = 0;
-					obj.rotation.z = pitch ; 
+					obj.rotation.y = pitch;
+					obj.rotation.z = 0 ; 
 				}
 				camera.lookAt( scene.position );
 
