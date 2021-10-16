@@ -34,7 +34,7 @@
 
 				roll = Math.atan2(accY, accZ);
 				var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
-				pitch = Math.atan2( -1.0 * accX, x);
+				pitch = Math.atan2( 1.0 * accX, x);
 				console.log("roll:"+String(roll) + " pitch:" + String(pitch));
 			}
 
