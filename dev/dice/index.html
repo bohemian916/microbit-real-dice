@@ -35,8 +35,17 @@
 				roll = Math.atan2(accY, accZ);
 				var x = Math.sqrt( Math.pow(accY, 2) + Math.pow(accZ, 2) )
 				pitch = - Math.atan2( 1.0 * accX, x);
+
+				if(-0.1<accY && accY<0.1 && -0.1<accZ && accZ <0.1){
+					roll=0;
+					if(accX >0) {
+						pitch = 0.5*Math.PI;	
+					} else{
+						pitch = -0.5*Math.PI;
+					}
+				}
 				//console.log("roll:"+String(roll) + " pitch:" + String(pitch));
-				console.log("accX:"+String(accX) + " accY:" + String(accY) + "accZ:" +String(accZ));
+				//console.log("accX:"+String(accX) + " accY:" + String(accY) + "accZ:" +String(accZ));
 			}
 
 			function floor_and_ceil(acc){
