@@ -22,6 +22,9 @@
 			// microbit 
 			const ble = new BlueJelly();
 			let roll = 0, pitch =0; 
+			let default_x_rot =0;
+			let default_y_rot =0;
+			let default_z_rot = Math.Pi/180*15;
 			window.onload = function () {
 				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
 			}
@@ -118,7 +121,7 @@
 							.load( 'dice.obj', function ( object ) {
 
                                                                 object.scale.set(15, 15, 15); 
-								object.rotation.set(0, 0, Math.Pi/180*45);
+						//		object.rotation.set(0, 0, Math.Pi/180*45);
 								object.position.set(0,-20,0);
 								scene.add( object );
 								obj = object;
@@ -177,8 +180,9 @@
 //				camera.position.y += ( - mouseY - camera.position.y ) * .50;
 				if(obj){
 					//obj.rotation.y += 0.01;
-					obj.rotation.x = -1.0 * roll ;
-					obj.rotation.z =  pitch ; 
+					obj.rotation.x = default_x_rot + (-1.0 * roll) ;
+					obj.rotation.y = default_y_rot;
+					obj.rotation.z = default_z_rot + pitch ; 
 				}
 				camera.lookAt( scene.position );
 
