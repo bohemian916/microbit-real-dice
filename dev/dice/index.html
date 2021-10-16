@@ -23,20 +23,26 @@
 			const ble = new BlueJelly();
 			let roll = 0, pitch =0; 
 			window.onload = function () {
-				ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
+		//		ble.setUUID("UUID1", BlueJelly.MICROBIT_ACCELEROMETER_SERVICE, BlueJelly.MICROBIT_ACCELEROMETER_DATA);
+				ble.setUUID("UUID1", BlueJelly.MICROBIT_UART_SERVICE, BlueJelly.MICROBIT_TX_CHARACTERISTIC);
 			}
 			ble.onRead = function (data, uuid){
 
   				//数値化
-				var accX = floor_and_ceil(data.getInt16(0,true)/1000.0) ;
-				var accY = floor_and_ceil(data.getInt16(2,true)/1000.0) ;
-  				var accZ = floor_and_ceil(data.getInt16(4,true)/1000.0) ;
+		//		var accX = floor_and_ceil(data.getInt16(0,true)/1000.0) ;
+		//		var accY = floor_and_ceil(data.getInt16(2,true)/1000.0) ;
+  		//		var accZ = floor_and_ceil(data.getInt16(4,true)/1000.0) ;
 
-				roll = Math.atan2(accX, accZ);
-				var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
-				pitch = Math.atan2( -1.0 * accX, x);
-				console.log("roll:"+String(roll) + " pitch:" + String(pitch));
-
+		//		roll = Math.atan2(accxY, accZ);
+		//		var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
+		//		pitch = Math.atan2( -1.0 * accX, x);
+				//console.log("roll:"+String(roll) + " pitch:" + String(pitch));
+				const decoder = new TextDecoder('utf-8')
+				const str = decoder.decode(data)
+				console.log(str);
+				//数値化
+				roll = Number(str.split(',')[0]);
+				pitch = Number(str.split(',')[1]);
 			}
 
 			function floor_and_ceil(acc){
