@@ -33,8 +33,8 @@
   				var accZ = floor_and_ceil(data.getInt16(4,true)/1000.0) ;
 
 				roll = Math.atan2(accY, accZ);
-				var x = Math.sqrt(Math.pow(accY, 2) + Math.pow(accZ, 2))
-				pitch = Math.atan2( 1.0 * accX, x);
+				var x = Math.sqrt(Math.pow(accX, 2) + Math.pow(accZ, 2))
+				pitch = Math.atan2( 1.0 * accY, x);
 				console.log("roll:"+String(roll) + " pitch:" + String(pitch));
 			}
 
